@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+
+{% comment %}
+
+Parameters:
+	1. form
+	2. user_role
+
+{% endcomment %}
+
+
+
+{% block title %} Crear usuario {% endblock %}
+
+{% block main_title %} Crear un nuevo usuario {% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item">Cuenta</li>
+<li class="breadcrumb-item">Crear usuario</li>
+<li class="breadcrumb-item active">{{ user_role }}</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<div class="card mb-3">
+			<div class="card-header">
+				<h5>Crear nuevo usuario {{ user_role }}</h5>
+			</div>
+			<div class="card-body">				
+
+				<form method="POST">
+					{% csrf_token %}
+					{% include 'boletos/incl/form.html' %}
+					<button type="submit" class="btn btn-success">Crear</button>	
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block open_parent %}
+<script type="text/javascript">
+$("#cuenta").addClass("active");
+$("#cuenta_usuario").addClass("active");
+</script>
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+
+
+
+
+

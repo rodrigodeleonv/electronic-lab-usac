@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Modificar Usuario {{ cuser.email }} {% endblock %}
+
+{% block main_title %} Modificar Usuario {{ cuser.email }} {% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item">Cuenta</li>
+<li class="breadcrumb-item">Usuarios</li>
+<li class="breadcrumb-item active">Modificar Usuario</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<div class="card mb-3">
+			<div class="card-header">
+				<h5>Modificar al usuario {{ cuser.get_full_name }} ({{ cuser.get_role_display }})</h5>
+			</div>
+			<div class="card-body">
+				<form method="POST">
+					{% csrf_token %}
+					{% include 'boletos/incl/form.html' with form=form_user %}
+					<button type="submit" class="btn btn-outline-primary">Modificar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+{% block open_parent %}
+<script type="text/javascript">
+$("#cuenta").addClass("active");
+$("#cuenta_show").addClass("active");
+</script>
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+
+
