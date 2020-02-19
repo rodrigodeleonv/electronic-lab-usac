@@ -14,6 +14,7 @@ https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1
 """
 
 import os
+import re
 import json
 from socket import gethostname
 
@@ -26,7 +27,8 @@ with open(CONFIG_PATH, 'r') as config_file:
 
 # Setting the environment settings
 hostname = gethostname()
-if hostname == 'API1':
+hostame_regex = re.compile(r'^I\d{1,2}$')  # I0, I1, I2, ..., I99
+if hostame_regex.match(hostname):
     conf_en = conf['production']
 else:
     conf_en = conf['local']
@@ -123,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'America/Guatemala'
 

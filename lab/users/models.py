@@ -57,7 +57,7 @@ class User(AbstractUser):
     http://ronin2.ninja/django/extender-django-user-model/
     """
     username = None
-    email = models.EmailField(_('email address'), unique=True, help_text=_('Email'))
+    email = models.EmailField(_('email address'), unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
